@@ -62,4 +62,8 @@ class LessonNote
 
         return $this;
     }
+//    public function __toString(): string
+//    {
+//        return $this->getMyLessonMemo();  // or some string field in your Vegetal Entity
+//    }
 }
