@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}MakeLesson index{% endblock %}
+
+{% block body %}
+    <h1>MakeLesson index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Lesson_name</th>
+                <th>Lesson_part</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for make_lesson in make_lessons %}
+            <tr>
+                <td>{{ make_lesson.id }}</td>
+                <td>{{ make_lesson.lessonName }}</td>
+                <td>{{ make_lesson.lessonPart }}</td>
+                <td>
+                    <a href="{{ path('app_make_lesson_show', {'id': make_lesson.id}) }}">show</a>
+                    <a href="{{ path('app_make_lesson_edit', {'id': make_lesson.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_make_lesson_new') }}">Create new</a>
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}MakeLesson{% endblock %}
+
+{% block body %}
+    <h1>MakeLesson</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ make_lesson.id }}</td>
+            </tr>
+            <tr>
+                <th>Lesson_name</th>
+                <td>{{ make_lesson.lessonName }}</td>
+            </tr>
+            <tr>
+                <th>Lesson_part</th>
+                <td>{{ make_lesson.lessonPart }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_make_lesson_index') }}">back to list</a>
+
+    <a href="{{ path('app_make_lesson_edit', {'id': make_lesson.id}) }}">edit</a>
+
+    {{ include('make_lesson/_delete_form.html.twig') }}
+{% endblock %}
