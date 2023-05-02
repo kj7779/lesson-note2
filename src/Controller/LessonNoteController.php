@@ -16,8 +16,17 @@ class LessonNoteController extends AbstractController
     #[Route('/', name: 'app_lesson_note_index', methods: ['GET'])]
     public function index(LessonNoteRepository $lessonNoteRepository): Response
     {
+        $sort=[];
+        $check_pose =$lessonNoteRepository->findAll();
+        $count2 =count($check_pose);
+        for($i=0; $i<$count2; $i++) {
+            $sort[$i] = $check_pose[$i]->getMyLesson();
+        }
+        $sort2 = array_unique($sort);
+
         return $this->render('lesson_note/index.html.twig', [
             'lesson_notes' => $lessonNoteRepository->findAll(),
+            'lesson_notes2' => $sort2
         ]);
     }
 
@@ -74,5 +83,21 @@ class LessonNoteController extends AbstractController
         }
 
         return $this->redirectToRoute('app_lesson_note_index', [], Response::HTTP_SEE_OTHER);
+    }
+
+    #[Route('/sort/{my_lesson}', name: 'app_lesson_note_sort', methods:  ['GET', 'POST'])]
+    public function sort(string $my_lesson,Request $request,LessonNoteRepository $lessonNoteRepository): Response
+    {
+        $sort=[];
+        $check_pose =$lessonNoteRepository->findAll();
+        $count2 =count($check_pose);
+        for($i=0; $i<$count2; $i++) {
+            $sort[$i] = $check_pose[$i]->getMyLesson();
+        }
+        $sort2 = array_unique($sort);
+        return $this->render('lesson_note/index.html.twig', [
+            'lesson_notes' => $lessonNoteRepository->findBy(['my_lesson' => $my_lesson]),
+            'lesson_notes2' => $sort2
+        ]);
     }
 }

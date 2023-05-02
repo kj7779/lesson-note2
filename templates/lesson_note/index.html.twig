@@ -34,6 +34,8 @@
         {% endfor %}
         </tbody>
     </table>
-
+    {% for lesson_note in lesson_notes2 %}
+                     <a href="{{ path('app_lesson_note_sort', {'my_lesson': lesson_note}) }}">{{ lesson_note }}</a>
+    {% endfor %}
     <a href="{{ path('app_lesson_note_new') }}">Create new</a>
 {% endblock %}
