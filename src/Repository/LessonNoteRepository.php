@@ -39,6 +39,18 @@ class LessonNoteRepository extends ServiceEntityRepository
         }
     }
 
+    /**
+     * @throws ORMException
+     * @throws OptimisticLockException
+     */
+    public function add(LessonNote $entity, bool $flush = true): void
+    {
+        $this->_em->persist($entity);
+        if ($flush) {
+            $this->_em->flush();
+        }
+    }
+
 //    /**
 //     * @return LessonNote[] Returns an array of LessonNote objects
 //     */
