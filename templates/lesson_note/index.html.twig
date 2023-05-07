@@ -3,37 +3,20 @@
 {% block title %}LessonNote index{% endblock %}
 
 {% block body %}
-    <h1>LessonNote index</h1>
+    {% if lesson_name is defined %}
+    <h1>{{ lesson_name }}</h1>
+    {% endif %}
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>My_lesson</th>
-                <th>My_lesson_part</th>
-                <th>My_lesson_memo</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
         {% for lesson_note in lesson_notes %}
-            <tr>
-                <td>{{ lesson_note.id }}</td>
-                <td>{{ lesson_note.myLesson }}</td>
-                <td>{{ lesson_note.myLessonPart }}</td>
-                <td>{{ lesson_note.myLessonMemo }}</td>
-                <td>
+                <p>{{ lesson_note.id }}</p>
+                <p>{{ lesson_note.myLesson }}</p>
+                <p>{{ lesson_note.myLessonPart }}</p>
+                <p>{{ lesson_note.myLessonMemo }}</p>
+                <div>
                     <a href="{{ path('app_lesson_note_show', {'id': lesson_note.id}) }}">show</a>
                     <a href="{{ path('app_lesson_note_edit', {'id': lesson_note.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="5">no records found</td>
-            </tr>
+                </div>
         {% endfor %}
-        </tbody>
-    </table>
     {% for lesson_note in lesson_notes2 %}
                      <a href="{{ path('app_lesson_note_sort', {'my_lesson': lesson_note}) }}">{{ lesson_note }}</a>
     {% endfor %}

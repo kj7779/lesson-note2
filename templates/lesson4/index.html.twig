@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Lesson4 index{% endblock %}
+
+{% block body %}
+    <h1>Lesson4 index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Lesson_pose4</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for lesson4 in lesson4s %}
+            <tr>
+                <td>{{ lesson4.id }}</td>
+                <td>{{ lesson4.lessonPose4 }}</td>
+                <td>
+                    <a href="{{ path('app_lesson4_show', {'id': lesson4.id}) }}">show</a>
+                    <a href="{{ path('app_lesson4_edit', {'id': lesson4.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_lesson4_new') }}">Create new</a>
+{% endblock %}

@@ -11,6 +11,7 @@
                 <th>Id</th>
                 <th>Lesson_name</th>
                 <th>Lesson_part</th>
+                <th>Lesson2</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -20,6 +21,7 @@
                 <td>{{ make_lesson.id }}</td>
                 <td>{{ make_lesson.lessonName }}</td>
                 <td>{{ make_lesson.lessonPart }}</td>
+                <td>{{ make_lesson.lesson2 }}</td>
                 <td>
                     <a href="{{ path('app_make_lesson_show', {'id': make_lesson.id}) }}">show</a>
                     <a href="{{ path('app_make_lesson_edit', {'id': make_lesson.id}) }}">edit</a>

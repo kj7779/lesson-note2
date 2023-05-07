@@ -19,6 +19,9 @@ class MakeLesson
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $lesson_part = null;
 
+    #[ORM\ManyToOne(inversedBy: 'lesson_pose')]
+    private ?Lesson2 $lesson2 = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -44,6 +47,18 @@ class MakeLesson
     public function setLessonPart(?string $lesson_part): self
     {
         $this->lesson_part = $lesson_part;
+
+        return $this;
+    }
+
+    public function getLesson2(): ?Lesson2
+    {
+        return $this->lesson2;
+    }
+
+    public function setLesson2(?Lesson2 $lesson2): self
+    {
+        $this->lesson2 = $lesson2;
 
         return $this;
     }

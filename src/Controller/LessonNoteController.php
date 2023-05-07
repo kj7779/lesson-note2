@@ -95,9 +95,13 @@ class LessonNoteController extends AbstractController
             $sort[$i] = $check_pose[$i]->getMyLesson();
         }
         $sort2 = array_unique($sort);
+
+        $my_lesson_content = $lessonNoteRepository->findBy(['my_lesson' => $my_lesson]);
+        $my_lesson_name = $my_lesson_content[0]->getMyLesson();
         return $this->render('lesson_note/index.html.twig', [
             'lesson_notes' => $lessonNoteRepository->findBy(['my_lesson' => $my_lesson]),
-            'lesson_notes2' => $sort2
+            'lesson_notes2' => $sort2,
+            'lesson_name' => $my_lesson_name
         ]);
     }
 }

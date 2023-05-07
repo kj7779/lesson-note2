@@ -14,6 +14,7 @@ class MakeLessonType extends AbstractType
         $builder
             ->add('lesson_name')
             ->add('lesson_part')
+            ->add('lesson2')
         ;
     }
 
